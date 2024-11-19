@@ -1,0 +1,16 @@
+// File: source
+<?php
+
+$var = 'hello';
+$another_var = 'world';
+if ($va<>r !== null) {
+ echo $var;
+}
+
+// File: expected
+<?php
+
+$another_var = 'world';
+if ('hello' !== null) {
+ echo 'hello';
+}
