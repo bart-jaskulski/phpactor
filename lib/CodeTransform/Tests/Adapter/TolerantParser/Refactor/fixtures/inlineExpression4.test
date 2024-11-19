@@ -1,0 +1,22 @@
+// File: source
+<?php
+
+$var = 'outer_scope';
+
+function foo() {
+  $v<>ar = 'hello';
+  if ($var !== null) {
+    echo $var;
+  }
+}
+
+// File: expected
+<?php
+
+$var = 'outer_scope';
+
+function foo() {
+  if ('hello' !== null) {
+    echo 'hello';
+  }
+}

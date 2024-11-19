@@ -16,17 +16,12 @@ class WorseInlineExpressionTest extends WorseTestCase
     /**
      * @dataProvider provideInlineExpression
      */
-    public function testInlineExpression(string $test, string $name, ?string $expectedExceptionMessage = null): void
+    public function testInlineExpression(string $test): void
     {
         [$source, $expected, $offsetStart, $offsetEnd] = $this->sourceExpectedAndOffset(__DIR__ . '/fixtures/' . $test);
 
         $worseSourceCode = TextDocumentBuilder::fromPathAndString('file:///source', $source);
         $reflector = $this->reflectorForWorkspace($worseSourceCode);
-
-        if ($expectedExceptionMessage) {
-            $this->expectException(Exception::class);
-            $this->expectExceptionMessage($expectedExceptionMessage);
-        }
 
         $extractMethod = new WorseInlineExpression($reflector);
 
@@ -42,9 +37,28 @@ class WorseInlineExpressionTest extends WorseTestCase
 
     public function provideInlineExpression(): Generator
     {
-        yield 'no op' => [
+        yield 'inline simple variable when cursor on usage' => [
             'inlineExpression1.test',
-            'foobar',
+        ];
+
+        yield 'inline simple variable when cursor on definition' => [
+            'inlineExpression2.test',
+        ];
+
+        yield 'inline multiple variables' => [
+            'inlineExpression3.test',
+        ];
+
+        yield 'inline variables only in current scope' => [
+            'inlineExpression4.test',
+        ];
+
+        yield 'avoid inlining function parameters' => [
+            'inlineExpression5.test',
+        ];
+
+        yield 'complex expression' => [
+            'inlineExpression6.test',
         ];
     }
 }

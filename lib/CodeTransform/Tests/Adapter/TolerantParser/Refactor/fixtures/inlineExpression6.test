@@ -1,0 +1,22 @@
+// File: source
+<?php
+
+class Test {
+
+  public function foo($bar, $baz) {
+    $var = $baz !== null ? $bar * 2 : 1;
+
+    return $va<>r;
+  }
+}
+
+// File: expected
+<?php
+
+class Test {
+
+  public function foo($bar, $baz) {
+
+    return $baz !== null ? $bar * 2 : 1;
+  }
+}

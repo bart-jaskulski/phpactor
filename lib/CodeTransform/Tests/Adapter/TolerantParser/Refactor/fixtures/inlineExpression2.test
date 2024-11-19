@@ -1,8 +1,8 @@
 // File: source
 <?php
 
-$var = 'hello';
-if ($va<>r !== null) {
+$v<>ar = 'hello';
+if ($var !== null) {
 }
 
 // File: expected

@@ -1,12 +1,14 @@
 // File: source
 <?php
 
-$var = 'hello';
-if ($va<>r !== null) {
+$v<>ar = 'hello';
+if ($var !== null) {
+  echo $var;
 }
 
 // File: expected
 <?php
 
 if ('hello' !== null) {
+  echo 'hello';
 }

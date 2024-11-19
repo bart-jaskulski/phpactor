@@ -1,0 +1,21 @@
+// File: source
+<?php
+
+function foo($bar, $baz) {
+  if ($b<>az !== null) {
+    echo $bar;
+  }
+
+  return $baz;
+}
+
+// File: expected
+<?php
+
+function foo($bar, $baz) {
+  if ($baz !== null) {
+    echo $bar;
+  }
+
+  return $baz;
+}
